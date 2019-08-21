@@ -1,5 +1,5 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import {LogMessage} from "./app.component";
+import {Pipe, PipeTransform} from '@angular/core';
+import {LogMessage} from './app.component';
 
 @Pipe({ name: 'checkVisibility' })
 export class ShowPipe implements PipeTransform {

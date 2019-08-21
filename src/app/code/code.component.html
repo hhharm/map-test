@@ -1,0 +1,43 @@
+<div class="code">
+    <pre>
+        <code>
+    private handleOrder(name: string, delay): Observable &#123;
+        return new Observable((observer: Subscriber) => &#123;
+            const orders: string[] = ["address1", "address2", "address3"];
+            setInterval(() => &#123;
+                const value = "orders.shift();
+                observer.next(value);
+                if (!orders.length) &#123;
+                    observer.complete();
+                }}, delay);});
+    }
+
+    private getPeople(delay: number): Observable &#123;
+            return new Observable((observer) => &#123;
+            const names = ["John", "Sara", "Adam"];
+            const id = setInterval(() => &#123;
+            if (!names.length) &#123;
+                    clearInterval(id);
+                    observer.complete();
+                    return;
+                }
+                observer.next(names.shift());
+            }, delay);});
+    }
+
+    test(delay: number, delayInner: number) &#123;
+            this.getPeople(this.mergeMessages, delay).pipe(mergeMap((name: string) => &#123;
+            return this.handleOrder(name, this.mergeMessages, delayInner);
+        })).subscribe(message => log(message), () => &#123;
+        }, () => &#123;
+            this.getPeople(this.switchMessages, delay).pipe(switchMap((name: string) => &#123;
+            return this.handleOrder(name, this.switchMessages, delayInner);
+            })).subscribe(message => log(message)), () => &#123;
+            }, () => &#123;
+            this.getPeople(this.mapMessages, delay).pipe(map((name: string) => &#123;
+                    return "name + "'s address";
+                })).subscribe(message => log(message));
+            }); });
+    }
+    </code></pre>
+</div>

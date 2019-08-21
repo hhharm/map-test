@@ -1,0 +1,46 @@
+<div class="explanation">
+  <div class="explanation__text">
+    <h2>What actually happens here:</h2>
+
+    <p>There is some Observable that produces values, "external" observable.</p>
+
+    <i>Example: it sends John -> Sara -> Adam.</i>
+
+    <p>Let's suppose we want to create observable that takes value and sends new value instead. We do this with map
+      operator</p>
+
+    <code>firstObservable$.pipe(map(value => newValue))</code>
+
+    <i>Example: in: 'John', out: 'John's address'; in: 'Sara', out: 'Sara's address'; in: 'Adam', out: 'Adam's
+      address'</i>
+
+    <p>It is possible that we want to replace value with new observable. It's simple, nothing changes here:</p>
+
+    <code>firstObservable$.pipe(map(value => newObservable$))</code>
+
+    <p>And... what if we don't want to return observable but values that it produces? For example imagine that newValue
+      is
+      received via http request. Or even several new values. In that case we can manually subscribe to "internal"
+      observable
+      and write a whole lot of logic... or use switchMap or mergeMap operators.</p>
+
+    <p>They map value from external observable to some new observable and subscribe to it. The difference is that when
+      mergeMap receives new value it adds new subscription to existing one. And switchMap unsubscribes from previous
+      observable and subscribes to new. That's all =)</p>
+
+    <p>You can play with this by changing delays in external and internal observables.</p>
+
+    <h2>To sum up:</h2>
+
+    <p><strong>switchMap should be used when you need values only for the latest value</strong>. Example: user enters
+      page '/person/id/1'.
+      External observable returns new person id value, internal goes to server and return Person with that id. If user
+      goes
+      to page 'person/id/2' we no longer need to receive Person with id 1.</p>
+
+    <p><strong>mergeMap should be used when you need all the values</strong>. Example: user expands person card in the
+      list. External
+      observable returns new person id value, internal goes to server and return Person. If user expands another card we
+      still need value for previous person.</p>
+  </div>
+</div>

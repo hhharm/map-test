@@ -1,0 +1,13 @@
+<header class="map-log__header">
+  <button (click)="_showCode = !_showCode" class="map-log__show-code _button">
+    {{_showCode ? 'Hide code' : 'Show code'}}
+  </button>
+  <button (click)="_showExplanation = !_showExplanation">
+    {{_showExplanation ? 'Show text explanation' : 'Hide text explanation'}}
+  </button>
+</header>
+
+<app-results [hidden]="!_showCode && !_showExplanation"></app-results>
+
+<app-code *ngIf="_showCode"></app-code>
+<app-explanation *ngIf="_showExplanation"></app-explanation>

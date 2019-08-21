@@ -1,0 +1,62 @@
+<script src="../app.component.ts"></script>
+<div class="map-log__delay">
+  outer delay (ms):
+  <input [(ngModel)]="outerDelay" type="number">
+  inner delay (ms):
+  <input [(ngModel)]="innerDelay" type="number">
+  <button (click)="rerun()">Rerun</button>
+</div>
+
+<div *ngIf="!_showCode"
+     class="map-log__switch"
+>
+  Show inner observable value
+  <label class="switch">
+    <input (change)="mergeShowIO = !mergeShowIO"
+           type="checkbox"
+    >
+    <span class="slider round"></span>
+  </label>
+</div>
+
+<div class="map-log__results">
+  <div class="map-log">
+    <h1>mergeMap</h1>
+    <p *ngFor="let message of mergeMessages; trackBy: trackByFn"
+       [class._delivery]="message.type === 'OUT'"
+       [class._kitchen]="message.type === 'KITCHEN'"
+       [class._store]="message.type === 'IN'"
+       class="map-log__message"
+    >
+      <ng-container *ngIf="message | checkVisibility: mergeShowIO">
+        {{message.id}}
+      </ng-container>
+    </p>
+  </div>
+  <div class="map-log">
+    <h1>switchMap</h1>
+    <p *ngFor="let message of switchMessages; trackBy: trackByFn"
+       [class._delivery]="message.type === 'OUT'"
+       [class._kitchen]="message.type === 'KITCHEN'"
+       [class._store]="message.type === 'IN'"
+       class="map-log__message"
+    >
+      <ng-container *ngIf="message | checkVisibility: mergeShowIO">
+        {{message.id}}
+      </ng-container>
+    </p>
+  </div>
+  <div class="map-log">
+    <h1>map</h1>
+    <p *ngFor="let message of mapMessages; trackBy: trackByFn"
+       [class._delivery]="message.type === 'OUT'"
+       [class._kitchen]="message.type === 'KITCHEN'"
+       [class._store]="message.type === 'IN'"
+       class="map-log__message"
+    >
+      <ng-container *ngIf="message | checkVisibility: mergeShowIO">
+        {{message.id}}
+      </ng-container>
+    </p>
+  </div>
+</div>

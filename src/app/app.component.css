@@ -30,8 +30,7 @@
 
 .map-log {
     display: inline-block;
-    min-width: 450px;
-    height: 100%;
+  min-width: 30vw;
 }
 
 .map-log__message._store {
@@ -49,11 +48,14 @@
 }
 
 .map-log__switch {
-    margin-top: 24px;
     background-color: #aaccaa;
     padding: 15px;
 }
 
+.map-log__delay {
+  background-color: #78ec78;
+  padding: 15px;
+}
 /*below classes are from w3 site*/
 /* The switch - the box around the slider */
 .switch {
