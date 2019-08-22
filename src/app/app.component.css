@@ -1,121 +1,38 @@
 * {
-    font-family: 'Slabo 27px', serif;
-}
-
-.map-log__results {
-    --message-color-kitchen: #0099e5;
-    --message-color-delivery: #ff4c4c;
-    --message-color-store: #34bf49;
-}
-.map-log__show-code {
-    align-self: flex-end;
+  font-family: 'Slabo 27px', serif;
 }
 .map-log__header {
-    display: flex;
-    flex: 1 1;
-    align-items: flex-end;
-    justify-content: space-between;
-    flex-direction: row-reverse;
-    height: 50px;
+  border-bottom: 1px solid green;
 }
 
-.map-log__message {
-    margin: 0;
-    font-size: 18px;
+/*button styles are taken from https://fdossena.com/?p=html5cool/buttons/i.frag*/
+.app-button {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0 0.3em 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #FFFFFF;
+  background-color: #4eb5f1;
+  text-align: center;
+  transition: all 0.2s;
+  border-right: 1px solid #bbb;
 }
 
-.map-log__results {
-    display: flex;
+.app-button:hover {
+  cursor: pointer;
+  background-color: #4095c6;
 }
 
-.map-log {
-    display: inline-block;
-  min-width: 30vw;
+.app-button:active, .app-button:focus {
+  border: none;
 }
 
-.map-log__message._store {
-    color: var(--message-color-store);
-}
-
-.map-log__message._kitchen {
-    color: var(--message-color-kitchen);
-
-}
-
-.map-log__message._delivery {
-    color: var(--message-color-delivery);
-
-}
-
-.map-log__switch {
-    background-color: #aaccaa;
-    padding: 15px;
-}
-
-.map-log__delay {
-  background-color: #78ec78;
-  padding: 15px;
-}
-/*below classes are from w3 site*/
-/* The switch - the box around the slider */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 30px;
-    height: 17px;
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-/* The slider */
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 2px;
-    bottom: 2px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-input:checked + .slider {
-    background-color: #2196F3;
-}
-
-input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-    -webkit-transform: translateX(13px);
-    -ms-transform: translateX(13px);
-    transform: translateX(13px);
-}
-
-/* Rounded sliders */
-.slider.round {
-    border-radius: 17px;
-}
-
-.slider.round:before {
-    border-radius: 50%;
+@media all and (max-width: 30em) {
+  .app-button {
+    display: block;
+    margin: 0.2em auto;
+  }
 }

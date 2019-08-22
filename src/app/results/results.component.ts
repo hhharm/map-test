@@ -9,7 +9,8 @@ import {LogMessage} from '../app.component';
   styleUrls: ['./results.component.css']
 })
 export class ResultsComponent implements OnInit {
-
+  _hideDetails = true;
+  _showHint = true;
   mergeMessages: LogMessage[] = [];
   switchMessages: LogMessage[] = [];
   mapMessages: LogMessage[] = [];
@@ -17,15 +18,13 @@ export class ResultsComponent implements OnInit {
   outerDelay = 10;
   innerDelay = 5;
 
-  constructor() {
-  }
-
   ngOnInit() {
     this.test(this.outerDelay, this.innerDelay);
   }
 
 
   rerun() {
+    this._showHint = false;
     this.mergeMessages = [];
     this.switchMessages = [];
     this.mapMessages = [];

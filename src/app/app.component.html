@@ -1,13 +1,21 @@
 <header class="map-log__header">
-  <button (click)="_showCode = !_showCode" class="map-log__show-code _button">
-    {{_showCode ? 'Hide code' : 'Show code'}}
-  </button>
-  <button (click)="_showExplanation = !_showExplanation">
-    {{_showExplanation ? 'Show text explanation' : 'Hide text explanation'}}
-  </button>
+  <div (click)="toggle('RESULT')"
+       class="app-button"
+  >Results
+  </div>
+  <div (click)="toggle('EXP')"
+       class="app-button"
+  >
+    Text explanation
+  </div>
+  <div (click)="toggle('CODE')"
+       class="app-button map-log__show-code _button"
+  >
+    Source code
+  </div>
 </header>
 
-<app-results [hidden]="!_showCode && !_showExplanation"></app-results>
+<app-results [hidden]="_showCode || _showExplanation"></app-results>
 
 <app-code *ngIf="_showCode"></app-code>
 <app-explanation *ngIf="_showExplanation"></app-explanation>
